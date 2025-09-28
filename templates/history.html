@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Usage History</h2>
+    {% if data %}
+        <table>
+            <tr><th>Date</th><th>Amount (L)</th></tr>
+            {% for row in data %}
+            <tr><td>{{ row[0] }}</td><td>{{ row[1] }}</td></tr>
+            {% endfor %}
+        </table>
+        <p>Average Usage: {{ avg_usage|round(2) }} liters</p>
+        <p><strong>{{ tip }}</strong></p>
+    {% else %}
+        <p>No data yet. Add your first entry!</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Add New Entry</a>
+{% endblock %}
